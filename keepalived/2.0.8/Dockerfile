@@ -22,7 +22,7 @@ RUN apk add --no-cache \
     musl-dev \
     openssl \
     openssl-dev \
-    netcat \
+    netcat-openbsd \
     tzdata \
 	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
@@ -53,7 +53,7 @@ RUN apk add --no-cache \
     make \
     musl-dev \
     openssl-dev \
-    netcat \
+    netcat-openbsd \
 	tzdata
 
 #挂载配置文件
