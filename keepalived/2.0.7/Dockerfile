@@ -6,7 +6,8 @@ LABEL maintainer="408093957@qq.com"
 # Keepalived version
 ARG KEEPALIVED_VERSION=2.0.7
 
-RUN apk add --no-cache \
+RUN apk update \
+    apk add --no-cache \
     autoconf \
     curl \
     gcc \
@@ -41,6 +42,7 @@ RUN apk add --no-cache \
 	&& cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf \
 	&& rm -f keepalived.tar.gz \
     && rm -rf /keepalived \
+    && rm /var/cache/apk/* \
     && apk --no-cache del \
 	autoconf \
     gcc \
@@ -53,10 +55,7 @@ RUN apk add --no-cache \
     openssl-dev \
 	tzdata
 
-#本镜像不需传递任何参数，完全基于keepalived.conf挂载到容器的方案
-#所以容器在启动的时候一定要挂载自定义keepalived.conf文件到容器里/etc/keepalived/keepalived.conf
-#具体模板可参考上层的conf目录下的文件
-#否则会走默认的keepalived.conf，将毫无意义
+#挂载配置文件
 VOLUME 	/etc/keepalived
 
 #启动keepalived
