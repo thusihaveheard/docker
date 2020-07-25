@@ -2,10 +2,10 @@
 [2.0.8](https://github.com/thusihaveheard/docker/tree/master/keepalived/2.0.8/Dockerfile)
 
 # 说明
-<font color=red size=5>color=gray</font>  
-$\color{red}{sdfh}$  
-<font color='red'>*请不要使用2.0.8版本的源码，官方有bug!*</font>  
-<font color='red'>*在制作镜像的时候也浮现了，具体地址 https://github.com/acassen/keepalived/issues/987*</font>  
+<font color='red'>*请不要使用2.0.7版本的源码，有bug!*</font>  
+<font color='red'>*在制作镜像的时候也浮现了，具体地址:</font>   
+<font color='red'>*https://github.com/acassen/keepalived/issues/987*</font>  
+<font color='red'>*https://github.com/alpinelinux/aports/pull/5309*</font>  
    
  
 
