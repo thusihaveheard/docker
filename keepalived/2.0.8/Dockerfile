@@ -4,10 +4,9 @@ FROM alpine:3.12
 LABEL maintainer="408093957@qq.com"
 
 # Keepalived version
-ARG KEEPALIVED_VERSION=2.0.7
+ARG KEEPALIVED_VERSION=2.0.8
 
-RUN apk update \
-    apk add --no-cache \
+RUN apk add --no-cache \
     autoconf \
     curl \
     gcc \
@@ -23,12 +22,14 @@ RUN apk update \
     musl-dev \
     openssl \
     openssl-dev \
+    netcat \
     tzdata \
 	&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
 	&& curl -o keepalived.tar.gz -SL http://keepalived.org/software/keepalived-${KEEPALIVED_VERSION}.tar.gz \
-    && tar -xzf keepalived.tar.gz \
-	&& cd keepalived \
+	&& mkdir /keepalived \
+    && tar -xzf keepalived.tar.gz --strip 1 -C /keepalived\
+	&& cd /keepalived \
 	&& ./configure --disable-dynamic-linking \
     && make && make install \
 	&& cd - && mkdir -p /etc/keepalived \
@@ -37,12 +38,11 @@ RUN apk update \
 	#将keepalived 主程序加入到环境变量（安装目录下）
 	&& cp /usr/local/keepalived/sbin/keepalived /usr/sbin/keepalived \
 	#keepalived 启动脚本（源码目录下），放到 /etc/init.d/ 目录下就可以使用 service 命令便捷调用
-	&& cp keepalived/etc/init.d/keepalived  /etc/init.d/keepalived \
+	&& cp /keepalived/etc/init.d/keepalived  /etc/init.d/keepalived \
 	#将配置文件放到默认路径下
 	&& cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/keepalived.conf \
 	&& rm -f keepalived.tar.gz \
     && rm -rf /keepalived \
-    && rm /var/cache/apk/* \
     && apk --no-cache del \
 	autoconf \
     gcc \
@@ -53,6 +53,7 @@ RUN apk update \
     make \
     musl-dev \
     openssl-dev \
+    netcat \
 	tzdata
 
 #挂载配置文件

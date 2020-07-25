@@ -1,7 +1,10 @@
 # Dockerfile
-[2.0.7](https://github.com/thusihaveheard/docker/tree/master/keepalived/2.0.7/Dockerfile)
+[2.0.8](https://github.com/thusihaveheard/docker/tree/master/keepalived/2.0.8/Dockerfile)
 
 # 说明
+$\color{#FF3030}*请不要使用2.0.8版本的源码，官方有bug!*$  
+$\color{#FF3030}*在制作镜像的时候也浮现了，具体地址 https://github.com/acassen/keepalived/issues/987*$   
+ 
 
 本镜像不需传递任何参数，完全基于keepalived.conf挂载到容器的方案  
 
