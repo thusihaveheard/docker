@@ -3,7 +3,7 @@
 
 # 说明
 <font color='red'>*请不要使用2.0.7版本的源码，有bug!*</font>  
-<font color='red'>*在制作镜像的时候也浮现了，具体地址:</font>   
+<font color='red'>*在制作镜像的时候也浮现了，具体地址:*</font>   
 <font color='red'>*https://github.com/acassen/keepalived/issues/987*</font>  
 <font color='red'>*https://github.com/alpinelinux/aports/pull/5309*</font>  
    
