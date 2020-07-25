@@ -3,6 +3,7 @@
 
 # 说明
 $\color{red}{sdfh}$  
+<font color='red'>11111111</font>
 $\color{red}*{请不要使用2.0.8版本的源码，官方有bug!}*$  
 $\color{red}*{在制作镜像的时候也浮现了，具体地址 https://github.com/acassen/keepalived/issues/987}*$   
  
